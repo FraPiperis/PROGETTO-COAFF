@@ -1,0 +1,102 @@
+/* Stile generale */
+body {
+  margin: 0;
+  padding: 20px;
+  background-color: #121212;
+  color: white;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Titoli */
+h1 {
+  color: #fff;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+/* Tabelle */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 40px;
+  background-color: #1e1e1e;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+}
+
+thead {
+  background-color: #2a2a2a;
+}
+
+thead th {
+  color: #ccc;
+  text-align: left;
+  padding: 12px;
+  font-size: 1rem;
+  border-bottom: 1px solid #444;
+}
+
+tbody td {
+  padding: 12px;
+  border-bottom: 1px solid #333;
+  font-size: 0.95rem;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #1b1b1b;
+}
+
+/* Bottone elimina */
+.delete-btn {
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.delete-btn:hover {
+  background-color: #c9302c;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  thead {
+    display: none;
+  }
+
+  tbody tr {
+    display: block;
+    background-color: #1a1a1a;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+  }
+
+  tbody td {
+    display: block;
+    padding: 8px 10px;
+  }
+
+  tbody td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    color: #888;
+    display: block;
+    margin-bottom: 5px;
+    font-size: 0.85rem;
+  }
+}

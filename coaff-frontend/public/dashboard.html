@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard Backend</title>
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+  <h1>Utenti Registrati</h1>
+  <table id="usersTable">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Cognome</th>
+        <th>Email</th>
+        <th>Cellulare</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <h1>Ordini Ricevuti</h1>
+  <table id="ordersTable">
+    <thead>
+      <tr>
+        <th>Email Utente</th>
+        <th>Biglietti/Accrediti</th>
+        <th>Azioni</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    // Carica utenti
+    fetch('https://coaff-s3il.onrender.com/api/users', { ... })
+      .then(res => res.json())
+      .then(users => {
+        const tbody = document.getElementById('usersTable').querySelector('tbody');
+        users.forEach(u => {
+          tbody.innerHTML += `<tr>
+            <td data-label="Nome">${u.nome}</td>
+            <td data-label="Cognome">${u.cognome}</td>
+            <td data-label="Email">${u.email}</td>
+            <td data-label="Cellulare">${u.cellulare}</td>
+          </tr>`;
+        });
+      });
+
+    // Carica ordini
+    fetch('https://coaff-s3il.onrender.com/api/users', { ... })
+      .then(res => res.json())
+      .then(orders => {
+        const tbody = document.getElementById('ordersTable').querySelector('tbody');
+        orders.forEach(o => {
+          const items = o.items.map(i => `${i.tipo} (x${i.quantità})`).join(', ');
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td data-label="Email Utente">${o.userEmail}</td>
+            <td data-label="Biglietti/Accrediti">${items}</td>
+            <td data-label="Azioni">
+              <button class="delete-btn" onclick="deleteOrder('${o._id}', this)">Elimina</button>
+            </td>`;
+          tbody.appendChild(row);
+        });
+      });
+
+    // Funzione per eliminare un ordine
+    function deleteOrder(orderId, btn) {
+      if (!confirm('Sei sicuro di voler eliminare questo ordine?')) return;
+
+      fetch(`https://coaff-s3il.onrender.com/api/orders/${orderId}`, s {
+        method: 'DELETE',
+      })
+      .then(res => {
+        if (res.ok) {
+          btn.closest('tr').remove();
+        } else {
+          alert('Errore durante l\'eliminazione dell\'ordine.');
+        }
+      });
+    }
+  </script>
+</body>
+</html>

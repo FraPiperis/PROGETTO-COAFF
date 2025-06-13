@@ -1,0 +1,91 @@
+/* tickets-content, registrazione, prenotazione ecc */
+
+.tickets-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  color: white;
+}
+main {
+  width: 100%;
+}
+
+.content {
+  width: 100%
+}
+
+
+.registrazione, .prenotazione {
+  background-color: rgba(0, 0, 0, 0.5);
+  margin-bottom: 30px;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.form input {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: none;
+}
+
+.form button {
+  background-color: #f39c12;
+  border: none;
+  padding: 10px 20px;
+  font-weight: 700;
+  color: black;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.biglietti {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.ticket {
+  background-color: #222;
+  padding: 10px 15px;
+  border-radius: 5px;
+  flex: 1 1 150px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ticket button {
+  background-color: #f39c12;
+  border: none;
+  padding: 5px 10px;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.checkout-btn {
+  background-color: #f39c12;
+  border: none;
+  padding: 15px 25px;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 1.1rem;
+}
+
+/* Responsive */
+
+@media screen and (max-width: 768px) {
+  .biglietti {
+    flex-direction: column;
+  }
+
+  .ticket {
+    justify-content: space-between;
+  }
+}

@@ -1,0 +1,76 @@
+.eventi-content {
+  max-width: 900px;
+  margin: 40px auto 80px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px; /* spazio tra le card */
+}
+
+main {
+  width: 100%;
+}
+
+.content {
+  width: 100%
+}
+
+
+.about-section-glass {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 25px 30px;
+  color: #f5f5f5;
+  font-size: 15px;
+  line-height: 1.6;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeInUp 1.2s ease-out forwards;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  text-align: center;
+}
+
+.about-section-glass:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: scale(1.02);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
+}
+
+.about-section-glass h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: white; /* Titoli bianchi */
+}
+
+.evento-img {
+  max-width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+  height: auto;
+  object-fit: cover;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .eventi-content {
+    padding: 10px;
+    gap: 20px;
+  }
+
+  .about-section-glass h2 {
+    font-size: 1.6rem;
+  }
+}
