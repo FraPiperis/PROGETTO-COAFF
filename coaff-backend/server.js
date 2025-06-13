@@ -39,5 +39,5 @@ app.use((req, res) => {
 // Avvio server (IMPORTANTE: usa la porta di Render)
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
-  console.log(`Server attivo su http://localhost:${PORT}`);
+  console.log(`Server attivo su https://progetto-coaff.onrender.com/api/users:${PORT}`);
 });
