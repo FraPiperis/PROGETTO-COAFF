@@ -41,3 +41,7 @@ const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server attivo su http://localhost:${PORT}`);
 });
+
+//registrazione 
+const registrationRoutes = require('./routes/registrations');
+app.use('/api/register', registrationRoutes);
