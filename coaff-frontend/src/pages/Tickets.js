@@ -36,11 +36,22 @@ const Tickets = () => {
 
   const handleRegister = async () => {
     try {
-      const res = await await axios.post("https://progetto-coaff.onrender.com/api/users", user);
+      const res = await axios.post(
+        "https://progetto-coaff.onrender.com/api/users",
+        user
+      );
       setRegisteredUser(res.data.user);
       alert("Registrazione completata");
     } catch (error) {
-      alert("Errore registrazione: " + (error.response?.data?.message || error.message));
+      if (error.response) {
+        alert("Errore registrazione: " + error.response.data.message);
+      } else if (error.request) {
+        alert(
+          "Errore registrazione: Nessuna risposta dal server, problema di rete o CORS"
+        );
+      } else {
+        alert("Errore registrazione: " + error.message);
+      }
     }
   };
 
@@ -61,7 +72,10 @@ const Tickets = () => {
       alert("Ordine ricevuto nel backend");
       setCart([]);
     } catch (error) {
-      alert("Errore invio ordine: " + (error.response?.data?.message || error.message));
+      alert(
+        "Errore invio ordine: " +
+          (error.response?.data?.message || error.message)
+      );
     }
   };
 
@@ -77,12 +91,36 @@ const Tickets = () => {
         </div>
 
         <ul className={`nav-links ${menuOpen ? "open" : ""}`}>
-          <li><Link to="/" onClick={closeMenu}>HOME</Link></li>
-          <li><Link to="/ChiSiamo" onClick={closeMenu}>CHI SIAMO</Link></li>
-          <li><Link to="/Eventi" onClick={closeMenu}>EVENTI</Link></li>
-          <li><Link to="/Festival" onClick={closeMenu}>FESTIVAL</Link></li>
-          <li><Link to="/Tickets" onClick={closeMenu}>BIGLIETTI</Link></li>
-          <li><Link to="/Contatti" onClick={closeMenu}>CONTATTI</Link></li>
+          <li>
+            <Link to="/" onClick={closeMenu}>
+              HOME
+            </Link>
+          </li>
+          <li>
+            <Link to="/ChiSiamo" onClick={closeMenu}>
+              CHI SIAMO
+            </Link>
+          </li>
+          <li>
+            <Link to="/Eventi" onClick={closeMenu}>
+              EVENTI
+            </Link>
+          </li>
+          <li>
+            <Link to="/Festival" onClick={closeMenu}>
+              FESTIVAL
+            </Link>
+          </li>
+          <li>
+            <Link to="/Tickets" onClick={closeMenu}>
+              BIGLIETTI
+            </Link>
+          </li>
+          <li>
+            <Link to="/Contatti" onClick={closeMenu}>
+              CONTATTI
+            </Link>
+          </li>
         </ul>
       </nav>
 
