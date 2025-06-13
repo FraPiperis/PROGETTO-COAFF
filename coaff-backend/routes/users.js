@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
+const bcrypt = require('bcrypt');
 
 // Salva nuovo utente (registrazione)
 router.post('/', async (req, res) => {
@@ -13,8 +14,11 @@ router.post('/', async (req, res) => {
       return res.status(400).json({ message: 'Utente già registrato con questa email' });
     }
 
-    // Crea nuovo utente
-    const user = new User({ nome, cognome, email, cellulare, password });
+    // Hash della password per sicurezza
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // Crea nuovo utente con password hashata
+    const user = new User({ nome, cognome, email, cellulare, password: hashedPassword });
     await user.save();
 
     // Rimuovi la password dalla risposta per sicurezza
