@@ -24,7 +24,9 @@ const corsOptions = {
   credentials: true,
 };
 
-app.use(cors(corsOptions));
+app.use(cors({
+  origin: "https://coaf-grpm34v2r-frapiperis-projects.vercel.app/"
+}));
 app.use(express.json());
 app.use(express.static('public')); // static files (es: dashboard.html)
 
