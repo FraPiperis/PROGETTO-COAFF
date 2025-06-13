@@ -3,7 +3,6 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import "./Tickets.css";
 
-
 import bgImage from "../components/pexels-cottonbro-10506366.jpg";
 
 const Tickets = () => {
@@ -37,7 +36,7 @@ const Tickets = () => {
 
   const handleRegister = async () => {
     try {
-      const res = await axios.post("https://progetto-coaff.onrender.com", user);
+      const res = await axios.post("https://progetto-coaff.onrender.com/api/register", user);
       setRegisteredUser(res.data.user);
       alert("Registrazione completata");
     } catch (error) {
@@ -55,7 +54,7 @@ const Tickets = () => {
 
   const handleSendOrder = async () => {
     try {
-      await axios.post("https://progetto-coaff.onrender.com", {
+      await axios.post("https://progetto-coaff.onrender.com/api/ordini", {
         userEmail: registeredUser.email,
         items: cart,
       });
@@ -87,11 +86,11 @@ const Tickets = () => {
         </ul>
       </nav>
 
-       <div className="hero-content" style={{ backgroundImage: `url(${bgImage})` }}>
-                <div className="title-group">
-                    <h1 className="main-title">BIGLIETTI</h1>
-                </div>
-            </div>
+      <div className="hero-content" style={{ backgroundImage: `url(${bgImage})` }}>
+        <div className="title-group">
+          <h1 className="main-title">BIGLIETTI</h1>
+        </div>
+      </div>
 
       <main className="content tickets-content">
         <section className="registrazione">
