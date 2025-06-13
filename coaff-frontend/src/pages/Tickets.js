@@ -5,6 +5,9 @@ import "./Tickets.css";
 
 import bgImage from "../components/pexels-cottonbro-10506366.jpg";
 
+// Usa sempre la costante per l'URL del backend
+const API_BASE_URL = "https://progetto-coaff.onrender.com";
+
 const Tickets = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -37,7 +40,7 @@ const Tickets = () => {
   const handleRegister = async () => {
     try {
       const res = await axios.post(
-        "https://progetto-coaff.onrender.com/api/users",
+        `${API_BASE_URL}/api/users`,
         user
       );
       setRegisteredUser(res.data.user);
@@ -65,7 +68,7 @@ const Tickets = () => {
 
   const handleSendOrder = async () => {
     try {
-      await axios.post("https://progetto-coaff.onrender.com/api/ordini", {
+      await axios.post(`${API_BASE_URL}/api/orders`, {
         userEmail: registeredUser.email,
         items: cart,
       });
@@ -205,3 +208,4 @@ const Tickets = () => {
 };
 
 export default Tickets;
+// ...fine file...
