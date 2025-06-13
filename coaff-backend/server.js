@@ -2,11 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 
-const allowedOrigins = [
-  "https://coaf-grpm34v2r-frapiperis-projects.vercel.app",
-  "https://coaff-frapiperis-projects.vercel.app"
-];
-app.use(cors({ origin: allowedOrigins, credentials: true }));
+
+app.use(cors());
 
 
 const usersRoutes = require('./routes/users');

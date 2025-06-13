@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "./Tickets.css";
-
 import bgImage from "../components/pexels-cottonbro-10506366.jpg";
 
+// URL backend deployato
 const API_BASE_URL = "https://progetto-coaff.onrender.com";
 
 const Tickets = () => {
@@ -37,22 +37,19 @@ const Tickets = () => {
   const closeMenu = () => setMenuOpen(false);
 
   const handleRegister = async () => {
-    // Controllo base per campi vuoti (optional)
     if (!user.nome || !user.cognome || !user.email || !user.password) {
       alert("Compila tutti i campi obbligatori.");
       return;
     }
     try {
       const res = await axios.post(`${API_BASE_URL}/api/users`, user, {
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
       });
-      setRegisteredUser(res.data.user || res.data); // dipende da cosa risponde il backend
+      setRegisteredUser(res.data.user || res.data);
       alert("Registrazione completata");
     } catch (error) {
       if (error.response) {
-        alert("Errore registrazione: " + error.response.data.message || error.response.statusText);
+        alert("Errore registrazione: " + (error.response.data.message || error.response.statusText));
       } else if (error.request) {
         alert("Errore registrazione: Nessuna risposta dal server, problema di rete o CORS");
       } else {
@@ -89,44 +86,18 @@ const Tickets = () => {
     <div className="page-container">
       <nav className="navbar">
         <div className="logo">COAFF</div>
-
         <div className={`hamburger ${menuOpen ? "open" : ""}`} onClick={toggleMenu}>
           <span></span>
           <span></span>
           <span></span>
         </div>
-
         <ul className={`nav-links ${menuOpen ? "open" : ""}`}>
-          <li>
-            <Link to="/" onClick={closeMenu}>
-              HOME
-            </Link>
-          </li>
-          <li>
-            <Link to="/ChiSiamo" onClick={closeMenu}>
-              CHI SIAMO
-            </Link>
-          </li>
-          <li>
-            <Link to="/Eventi" onClick={closeMenu}>
-              EVENTI
-            </Link>
-          </li>
-          <li>
-            <Link to="/Festival" onClick={closeMenu}>
-              FESTIVAL
-            </Link>
-          </li>
-          <li>
-            <Link to="/Tickets" onClick={closeMenu}>
-              BIGLIETTI
-            </Link>
-          </li>
-          <li>
-            <Link to="/Contatti" onClick={closeMenu}>
-              CONTATTI
-            </Link>
-          </li>
+          <li><Link to="/" onClick={closeMenu}>HOME</Link></li>
+          <li><Link to="/ChiSiamo" onClick={closeMenu}>CHI SIAMO</Link></li>
+          <li><Link to="/Eventi" onClick={closeMenu}>EVENTI</Link></li>
+          <li><Link to="/Festival" onClick={closeMenu}>FESTIVAL</Link></li>
+          <li><Link to="/Tickets" onClick={closeMenu}>BIGLIETTI</Link></li>
+          <li><Link to="/Contatti" onClick={closeMenu}>CONTATTI</Link></li>
         </ul>
       </nav>
 
@@ -175,45 +146,3 @@ const Tickets = () => {
           <h2>Biglietti Giornalieri</h2>
           <div className="biglietti">
             {tickets.map((t, i) => (
-              <div className="ticket" key={i}>
-                {t.tipo} - €{t.prezzo}
-                <button onClick={() => addToCart(t)}>+</button>
-              </div>
-            ))}
-          </div>
-
-          <h2>Accrediti</h2>
-          <div className="biglietti">
-            {accrediti.map((a, i) => (
-              <div className="ticket" key={i}>
-                {a.tipo} - €{a.prezzo}
-                <button onClick={() => addToCart(a)}>+</button>
-              </div>
-            ))}
-          </div>
-
-          <h2>Carrello</h2>
-          {cart.length === 0 ? (
-            <p>Carrello vuoto</p>
-          ) : (
-            <ul>
-              {cart.map((item, i) => (
-                <li key={i}>
-                  {item.tipo} - €{item.prezzo} (Quantità: {item.quantità})
-                </li>
-              ))}
-            </ul>
-          )}
-
-          {cart.length > 0 && (
-            <button className="checkout-btn" onClick={handleSendOrder}>
-              Invia Ordine 🛒
-            </button>
-          )}
-        </section>
-      </main>
-    </div>
-  );
-};
-
-export default Tickets;
