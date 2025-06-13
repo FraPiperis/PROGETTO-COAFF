@@ -146,3 +146,45 @@ const Tickets = () => {
           <h2>Biglietti Giornalieri</h2>
           <div className="biglietti">
             {tickets.map((t, i) => (
+              <div className="ticket" key={i}>
+                {t.tipo} - €{t.prezzo}
+                <button onClick={() => addToCart(t)}>+</button>
+              </div>
+            ))}
+          </div>
+
+          <h2>Accrediti</h2>
+          <div className="biglietti">
+            {accrediti.map((a, i) => (
+              <div className="ticket" key={i}>
+                {a.tipo} - €{a.prezzo}
+                <button onClick={() => addToCart(a)}>+</button>
+              </div>
+            ))}
+          </div>
+
+          <h2>Carrello</h2>
+          {cart.length === 0 ? (
+            <p>Carrello vuoto</p>
+          ) : (
+            <ul>
+              {cart.map((item, i) => (
+                <li key={i}>
+                  {item.tipo} - €{item.prezzo} (Quantità: {item.quantità})
+                </li>
+              ))}
+            </ul>
+          )}
+
+          {cart.length > 0 && (
+            <button className="checkout-btn" onClick={handleSendOrder}>
+              Invia Ordine 🛒
+            </button>
+          )}
+        </section>
+      </main>
+    </div>
+  );
+};
+
+export default Tickets;
