@@ -5,7 +5,6 @@ import "./Tickets.css";
 
 import bgImage from "../components/pexels-cottonbro-10506366.jpg";
 
-// Usa sempre la costante per l'URL del backend
 const API_BASE_URL = "https://progetto-coaff.onrender.com";
 
 const Tickets = () => {
@@ -38,20 +37,24 @@ const Tickets = () => {
   const closeMenu = () => setMenuOpen(false);
 
   const handleRegister = async () => {
+    // Controllo base per campi vuoti (optional)
+    if (!user.nome || !user.cognome || !user.email || !user.password) {
+      alert("Compila tutti i campi obbligatori.");
+      return;
+    }
     try {
-      const res = await axios.post(
-        `${API_BASE_URL}/api/users`,
-        user
-      );
-      setRegisteredUser(res.data.user);
+      const res = await axios.post(`${API_BASE_URL}/api/users`, user, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      setRegisteredUser(res.data.user || res.data); // dipende da cosa risponde il backend
       alert("Registrazione completata");
     } catch (error) {
       if (error.response) {
-        alert("Errore registrazione: " + error.response.data.message);
+        alert("Errore registrazione: " + error.response.data.message || error.response.statusText);
       } else if (error.request) {
-        alert(
-          "Errore registrazione: Nessuna risposta dal server, problema di rete o CORS"
-        );
+        alert("Errore registrazione: Nessuna risposta dal server, problema di rete o CORS");
       } else {
         alert("Errore registrazione: " + error.message);
       }
@@ -139,23 +142,29 @@ const Tickets = () => {
           <div className="form">
             <input
               placeholder="Nome"
+              value={user.nome}
               onChange={(e) => setUser({ ...user, nome: e.target.value })}
             />
             <input
               placeholder="Cognome"
+              value={user.cognome}
               onChange={(e) => setUser({ ...user, cognome: e.target.value })}
             />
             <input
               placeholder="Email"
+              type="email"
+              value={user.email}
               onChange={(e) => setUser({ ...user, email: e.target.value })}
             />
             <input
               placeholder="Cellulare"
+              value={user.cellulare}
               onChange={(e) => setUser({ ...user, cellulare: e.target.value })}
             />
             <input
               type="password"
               placeholder="Password"
+              value={user.password}
               onChange={(e) => setUser({ ...user, password: e.target.value })}
             />
             <button onClick={handleRegister}>Invia Registrazione</button>
@@ -208,4 +217,3 @@ const Tickets = () => {
 };
 
 export default Tickets;
-// ...fine file...
