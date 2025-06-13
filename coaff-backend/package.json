@@ -10,7 +10,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "mongoose": "^x.y.z",
+    "mongoose": "^7.3.4",
     "react-scripts": "^5.0.1",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
