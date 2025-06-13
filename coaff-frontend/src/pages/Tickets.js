@@ -36,7 +36,7 @@ const Tickets = () => {
 
   const handleRegister = async () => {
     try {
-      const res = await axios.post("https://progetto-coaff.onrender.com/api/register", user);
+      const res = await await axios.post("https://progetto-coaff.onrender.com/api/users", user);
       setRegisteredUser(res.data.user);
       alert("Registrazione completata");
     } catch (error) {
