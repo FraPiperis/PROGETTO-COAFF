@@ -1,31 +1,37 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
-function AdminTable() {
+const API_BASE_URL = "https://progetto-coaff.onrender.com"; // Cambia con il tuo URL backend
+
+function AdminDashboard() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3001/admin/users')  // O la tua API esatta
-      .then(res => res.json())
-      .then(data => setUsers(data));
+    // Recupera gli utenti dal backend
+    axios.get(`${API_BASE_URL}/api/users`)
+      .then(res => setUsers(res.data))
+      .catch(err => console.error("Errore caricamento utenti:", err));
   }, []);
 
   return (
     <div>
-      <h2>Gestione Utenti</h2>
+      <h2>Utenti registrati</h2>
       <table>
         <thead>
           <tr>
             <th>Nome</th>
+            <th>Cognome</th>
+            <th>Cellulare</th>
             <th>Email</th>
-            <th>Ruolo</th>
+            {/* Aggiungi altre colonne se servono */}
           </tr>
         </thead>
         <tbody>
-          {users.map((user, index) => (
-            <tr key={index}>
-              <td>{user.name}</td>
+          {users.map(user => (
+            <tr key={user._id}>
+              <td>{user.nome}</td>
               <td>{user.email}</td>
-              <td>{user.role}</td>
+              {/* Altri dati */}
             </tr>
           ))}
         </tbody>
@@ -34,4 +40,4 @@ function AdminTable() {
   );
 }
 
-export default AdminTable;
+export default AdminDashboard;

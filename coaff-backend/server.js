@@ -6,7 +6,7 @@ const usersRoutes = require('./routes/users');
 const ordersRoutes = require('./routes/orders');
 const adminRoutes = require('./routes/admin');
 
-//Connessione a MongoDB
+// Connessione a MongoDB
 const mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost:27017/coaffdb', {

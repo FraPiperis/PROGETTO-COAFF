@@ -55,7 +55,7 @@ const Tickets = () => {
 
   const handleSendOrder = async () => {
     try {
-      await axios.post("http://localhost:3001/api/orders", {
+      await axios.post("https://progetto-coaff.onrender.com", {
         userEmail: registeredUser.email,
         items: cart,
       });
