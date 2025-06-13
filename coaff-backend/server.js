@@ -1,5 +1,14 @@
 const express = require('express');
 const cors = require('cors');
+const allowedOrigins = [
+  "https://coaf-grpm34v2r-frapiperis-projects.vercel.app",
+  "https://coaf-5jjoq5a2g-frapiperis-projects.vercel.app",
+  "https://coaff-frapiperis-projects.vercel.app"
+];
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true
+}));
 const app = express();
 
 const usersRoutes = require('./routes/users');
@@ -24,9 +33,7 @@ const corsOptions = {
   credentials: true,
 };
 
-app.use(cors({
-  origin: "https://coaf-grpm34v2r-frapiperis-projects.vercel.app/"
-}));
+
 app.use(express.json());
 app.use(express.static('public')); // static files (es: dashboard.html)
 
