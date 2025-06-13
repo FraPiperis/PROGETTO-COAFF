@@ -29,7 +29,7 @@ mongoose.connect(process.env.MONGO_URL, {
 
 // Configura CORS esplicito per il dominio frontend
 const corsOptions = {
-  origin: 'https://coaf-5jjoq5a2g-frapiperis-projects.vercel.app/',  // Cambia con il tuo URL frontend corretto
+  origin: 'https://coaf-grpm34v2r-frapiperis-projects.vercel.app/',  // Cambia con il tuo URL frontend corretto
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
