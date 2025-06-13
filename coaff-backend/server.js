@@ -16,8 +16,15 @@ mongoose.connect(process.env.MONGO_URL, {
 .then(() => console.log('MongoDB connesso!'))
 .catch(err => console.error('Errore connessione MongoDB:', err));
 
-// Middleware
-app.use(cors());
+// Configura CORS esplicito per il dominio frontend
+const corsOptions = {
+  origin: 'https://coaf-5jjoq5a2g-frapiperis-projects.vercel.app/',  // Cambia con il tuo URL frontend corretto
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.static('public')); // static files (es: dashboard.html)
 
@@ -39,5 +46,5 @@ app.use((req, res) => {
 // Avvio server (IMPORTANTE: usa la porta di Render)
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
-  console.log(`Server attivo su https://progetto-coaff.onrender.com/api/users:${PORT}`);
+  console.log(`Server attivo su porta ${PORT}`);
 });
