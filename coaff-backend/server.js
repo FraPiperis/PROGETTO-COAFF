@@ -9,7 +9,7 @@ const adminRoutes = require('./routes/admin');
 // Connessione a MongoDB
 const mongoose = require('mongoose');
 
-mongoose.connect(MONGO_URL, {
+mongoose.connect(process.env.MONGO_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
@@ -36,8 +36,8 @@ app.use((req, res) => {
   res.status(404).json({ message: 'Endpoint non trovato' });
 });
 
-// Avvio server
-const PORT = 3001;
+// Avvio server (IMPORTANTE: usa la porta di Render)
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server attivo su http://localhost:${PORT}`);
 });
