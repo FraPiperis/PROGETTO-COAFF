@@ -1,8 +1,8 @@
-// ChiSiamo.js
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './ChiSiamo.css';
 import bgImage from "../components/pexels-cottonbro-10506366.jpg";
+import teamImage from "../components/sfondo-festival.png"; // Assicurati che esista l’immagine
 
 const ChiSiamo = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -31,27 +31,31 @@ const ChiSiamo = () => {
         </ul>
       </nav>
 
-      {/* Hero Section Uniformata */}
       <div className="hero-content" style={{ backgroundImage: `url(${bgImage})` }}>
         <h1 className="main-title">CHI SIAMO</h1>
       </div>
 
       <main className="chi-siamo-content">
-        {/* Prima card */}
-        <section className="about-section-glass">
-          <p>
-            Il Coming of Age Film Festival nasce con l’intento di celebrare il cinema di formazione in tutte le sue sfumature.
-            La nostra missione è dare spazio a nuove voci del panorama cinematografico e promuovere un dialogo autentico 
-            tra generazioni attraverso il potere del racconto audiovisivo.
-          </p>
-          <p>
-            Il festival è organizzato da un team di appassionati di cinema e creativi che credono nella forza delle storie 
-            per crescere, comprendere e connettersi. Offriamo proiezioni, incontri con autori, workshop e momenti di confronto 
-            per un pubblico eterogeneo e curioso.
-          </p>
-          <p>
-            Unisciti a noi per vivere un'esperienza culturale unica, dove ogni film è un viaggio e ogni spettatore un protagonista.
-          </p>
+        {/* Prima card con immagine + testo */}
+        <section className="about-section-glass with-image">
+          <div className="image-container">
+            <img src={teamImage} alt="Team COAFF" />
+          </div>
+          <div className="text-container">
+            <p>
+              Il Coming of Age Film Festival nasce con l’intento di celebrare il cinema di formazione in tutte le sue sfumature.
+              La nostra missione è dare spazio a nuove voci del panorama cinematografico e promuovere un dialogo autentico 
+              tra generazioni attraverso il potere del racconto audiovisivo.
+            </p>
+            <p>
+              Il festival è organizzato da un team di appassionati di cinema e creativi che credono nella forza delle storie 
+              per crescere, comprendere e connettersi. Offriamo proiezioni, incontri con autori, workshop e momenti di confronto 
+              per un pubblico eterogeneo e curioso.
+            </p>
+            <p>
+              Unisciti a noi per vivere un'esperienza culturale unica, dove ogni film è un viaggio e ogni spettatore un protagonista.
+            </p>
+          </div>
         </section>
 
         {/* Seconda card: PROGRAMMA */}

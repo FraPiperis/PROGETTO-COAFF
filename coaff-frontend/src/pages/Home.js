@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Home.css';
+import bgImage from "../components/pexels-cottonbro-10506366.jpg";
 
 const Home = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -11,8 +12,7 @@ const Home = () => {
   return (
     <div
       className="home-container"
-      style={{
-        backgroundImage: "url('/sfondo-eventi.png')",
+      style={{ backgroundImage: `url(${bgImage})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         minHeight: "100vh"

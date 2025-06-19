@@ -32,44 +32,48 @@ const Contatti = () => {
       </nav>
 
       <div className="hero-content" style={{ backgroundImage: `url(${bgImage})` }}>
-                    <div className="title-group">
-                      <h1 className="main-title">CONTATTI</h1>
-                    </div>
-                  </div>
+        <div className="title-group">
+          <h1 className="main-title">CONTATTI</h1>
+        </div>
+      </div>
 
       <main className="content contact-info">
-        <ul>
+        <ul className="social-list">
           <li>
-            <i className="fab fa-letterboxd"></i> Letterboxd:{' '}
-            <a href="https://boxd.it/e9ntP" target="_blank" rel="noopener noreferrer">
-              Letterboxd Coaff
+            <a href="https://boxd.it/e9ntP" target="_blank" rel="noopener noreferrer" className="social-link">
+              <i className="fab fa-letterboxd social-icon letterboxd"></i>
+              <span className="social-text">Letterboxd Coaff</span>
             </a>
           </li>
           <li>
-            <i className="fab fa-instagram"></i> Instagram:{' '}
-            <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer">
-              @coafilmfestival
+            <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" className="social-link">
+              <i className="fab fa-instagram social-icon instagram"></i>
+              <span className="social-text">@coafilmfestival</span>
             </a>
           </li>
           <li>
-            <i className="fab fa-spotify"></i> Spotify:{' '}
-            <a href="https://open.spotify.com/user/31ksu5hrjk22ytfcstoxj6a4cwje?si=VQzkcn2DSx-8V0nUlLCA8Q&nd=1&dlsi=4e7bd8d7adbb45e7" target="_blank" rel="noopener noreferrer">
-              COAFF
+            <a href="https://open.spotify.com/user/31ksu5hrjk22ytfcstoxj6a4cwje?si=VQzkcn2DSx-8V0nUlLCA8Q&nd=1&dlsi=4e7bd8d7adbb45e7" target="_blank" rel="noopener noreferrer" className="social-link">
+              <i className="fab fa-spotify social-icon spotify"></i>
+              <span className="social-text">COAFF</span>
             </a>
           </li>
           <li>
-            <i className="fab fa-tiktok"></i> TikTok:{' '}
-            <a href="https://tiktok.com/" target="_blank" rel="noopener noreferrer">
-              @coaffilmfest
+            <a href="https://tiktok.com/" target="_blank" rel="noopener noreferrer" className="social-link">
+              <i className="fab fa-tiktok social-icon tiktok"></i>
+              <span className="social-text">@coaffilmfest</span>
             </a>
           </li>
           <li>
-            <i className="fas fa-envelope"></i> Email:{' '}
-            <a href="mailto:coafilmfestival@gmail.com">coafilmfestival@gmail.com</a>
+            <a href="mailto:coafilmfestival@gmail.com" className="social-link">
+              <i className="fas fa-envelope social-icon email"></i>
+              <span className="social-text">coafilmfestival@gmail.com</span>
+            </a>
           </li>
           <li>
-            <i className="fas fa-phone"></i> Telefono:{' '}
-            <a href="tel:+393924458617">+39 392 445 8617</a>
+            <a href="tel:+393924458617" className="social-link">
+              <i className="fas fa-phone social-icon phone"></i>
+              <span className="social-text">+39 392 445 8617</span>
+            </a>
           </li>
         </ul>
       </main>
