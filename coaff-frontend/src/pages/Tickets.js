@@ -110,6 +110,7 @@ const Tickets = () => {
       <main className="content tickets-content">
         <section className="registrazione">
           <h2>Registrazione Utente</h2>
+          <p>Inserisci i tuoi dati, prenota i tuoi biglietti e presentati al botteghino all'entrata del Festival con <strong>NOME e COGNOME</strong> per ritirare i nostri gadget e gli accrediti prenotati (tutti rispettivamente stampati con carta riciclata e in rispetto della sostenibilità ambientale)</p>
           <div className="form">
             <input
               placeholder="Nome"
