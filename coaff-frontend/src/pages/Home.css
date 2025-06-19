@@ -89,6 +89,8 @@
   color: white;
   padding: 0 20px;
   font-family: 'Arial', sans-serif;
+   position: relative; 
+  z-index: 5;
 }
 
 .title-group {
@@ -128,6 +130,8 @@
   display: inline-block;
   text-decoration: none;
   text-align: center;
+  position: relative; /* assicurati sia cliccabile */
+  z-index: 10; /*
 }
 
 .animated-btn:hover {
